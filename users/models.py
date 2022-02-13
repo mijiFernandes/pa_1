@@ -17,9 +17,9 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         super().save()
 
-        img = Image.open(self.avatar.path)
+        img = Image.open(self.avatar.name)
 
         if img.height > 100 or img.width > 100:
             new_img = (100, 100)
             img.thumbnail(new_img)
-            img.save(self.avatar.path)
+            img.save(self.avatar.name)
