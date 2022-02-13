@@ -24,7 +24,7 @@
             <a class="nav-link dropdown-toggle" style="font-size:1.2em; color: white;"  href="#" data-bs-toggle="dropdown">
                 <img style="border-radius:5px; -moz-border-radius: 5px;
                     -khtml-border-radius:5px;
-                    -webkit-border-radius:5px;" src="https://pa-bucket-1.s3.us-east-2.amazonaws.com/{{ user.profile.avatar.url }} " width="15" height="15"/>&ensp;{% firstof user.username %}&ensp;</a>
+                    -webkit-border-radius:5px;" src="{{ user.profile.avatar.url }} " width="15" height="15"/>&ensp;{% firstof user.username %}&ensp;</a>
             <div class="dropdown-menu">
                 <span><a class="dropdown-item" href="{% url 'users-profile' %}">My Page</a></span>
                 <span><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></span>
