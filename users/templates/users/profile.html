@@ -4,7 +4,7 @@
     <div class="row my-3 p-3">
         <img style="border-radius:5px; -moz-border-radius: 5px;
              -khtml-border-radius:5px;
-             -webkit-border-radius:5px;" src="{{ user.profile.avatar.url }} " width="75" height="75" style="cursor: pointer;"/>
+             -webkit-border-radius:5px;" src="https://pa-bucket-1.s3.us-east-2.amazonaws.com{{ user.profile.avatar.url }} " width="75" height="75" style="cursor: pointer;"/>
     </div>
     {% if user_form.errors %}
         <div class="alert alert-danger alert-dismissible" role="alert">
