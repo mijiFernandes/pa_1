@@ -7,7 +7,7 @@ import urllib.request
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    avatar = models.ImageField(default='media/default.jpg', upload_to='profile_images/%Y/%m')
+    avatar = models.ImageField(blank=True, upload_to='profile_images/%Y/%m')
     bio = models.TextField()
 
     def __str__(self):
