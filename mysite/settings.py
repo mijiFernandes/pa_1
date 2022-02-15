@@ -130,8 +130,9 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -158,5 +159,4 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')
 AWS_S3_REGION_NAME = 'us-east-2'
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
 AWS_DEFAULT_ACL = 'public-read'
-
 
