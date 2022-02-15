@@ -27,4 +27,4 @@ class Profile(models.Model):
             new_img = (100, 100)
             img.thumbnail(new_img)
             img.save(self.avatar.name)
-            return HttpResponseRedirect(reverse_lazy('users:users-profile'))
+            img.close()
