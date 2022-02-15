@@ -14,8 +14,8 @@ class Profile(models.Model):
         return self.user.username
 
     # # resizing images
-    # def save(self, *args, **kwargs):
-    #     super().save()
+    def save(self, *args, **kwargs):
+        super(Profile, self).save()
     #     urllib.request.urlretrieve(self.avatar.url, "image.png")
     #     img = Image.open("image.png")
     #     if img.height > 100 or img.width > 100:
