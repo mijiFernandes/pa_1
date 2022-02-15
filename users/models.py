@@ -19,4 +19,4 @@ class Profile(models.Model):
         urllib.request.urlretrieve(self.avatar.url, "image.png")
         image = Image.open("image.png")
         resized_image = image.resize((100, 100), Image.ANTIALIAS)
-        resized_image.save(self.avatar.name)
+        resized_image.save(self.avatar.url)
