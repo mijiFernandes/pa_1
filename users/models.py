@@ -17,6 +17,7 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         super().save()
         urllib.request.urlretrieve(self.avatar.url, "image.png")
-        image = Image.open("image.png")
-        resized_image = image.resize((100, 100), Image.ANTIALIAS)
-        resized_image.save("image.png")
+        img = Image.open("image.png")
+        if img.height > 100 or img.width > 100:
+            new_img = (100, 100)
+            img.thumbnail(new_img)
