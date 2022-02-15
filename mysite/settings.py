@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'users.apps.UserConfig',
     'social_django',
     'storages',
+    'django_fields',
 ]
 
 MIDDLEWARE = [
@@ -158,4 +159,3 @@ AWS_STORAGE_BUCKET_NAME = os.environ.get('S3_BUCKET_NAME')
 AWS_S3_REGION_NAME = 'us-east-2'
 AWS_S3_CUSTOM_DOMAIN = f"{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
 AWS_DEFAULT_ACL = 'public-read'
-
