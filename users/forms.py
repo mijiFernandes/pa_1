@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 from .models import Profile
+from PIL import Image
 
 
 class RegisterForm(UserCreationForm):
@@ -86,3 +87,12 @@ class UpdateProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['avatar', 'bio']
+
+    def save(self, *args, **kwargs):
+        photo = super(UpdateProfileForm, self).save()
+
+        image = Image.open(photo.avatar)
+        resized_image = image.resize((100, 100), Image.ANTIALIAS)
+        resized_image.save(photo.avatar.name)
+
+        return photo

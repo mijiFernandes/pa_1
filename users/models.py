@@ -18,12 +18,4 @@ class Profile(models.Model):
 
     # resizing images
     def save(self, *args, **kwargs):
-        photo = super(Profile, self).save()
-
-        image = Image.open(photo.avatar)
-        resized_image = image.resize((100, 100), Image.ANTIALIAS)
-        storage_path = storage.open(photo.avatar.name, "wb")
-        resized_image.save(storage_path, 'png')
-        storage_path.close()
-
-        return photo
+        super().save(*args, **kwargs)
