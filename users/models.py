@@ -19,12 +19,12 @@ class Profile(models.Model):
 
     # resizing images
     def save(self, *args, **kwargs):
-        super().save()
+        super(User, self).save()
 
-        img = Image.open('media/' + self.avatar.name)
+        img = Image.open(User.avatar.name)
 
         if img.height > 100 or img.width > 100:
             new_img = (100, 100)
             img.thumbnail(new_img)
-            img.save(self.avatar.name)
+            img.save(User.avatar.name)
             img.close()
