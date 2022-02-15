@@ -4,6 +4,8 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 from .models import Profile
 from PIL import Image
+import os
+from django.conf import settings
 
 
 class RegisterForm(UserCreationForm):
@@ -80,6 +82,9 @@ class UpdateUserForm(forms.ModelForm):
         fields = ['username', 'email']
 
 
+base_dir = settings.MEDIA_ROOT
+
+
 class UpdateProfileForm(forms.ModelForm):
     avatar = forms.ImageField(widget=forms.FileInput(attrs={'class': 'form-control-file'}))
     bio = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 5}))
@@ -91,7 +96,7 @@ class UpdateProfileForm(forms.ModelForm):
     def save(self, *args, **kwargs):
         photo = super(UpdateProfileForm, self).save()
 
-        image = Image.open('/' + photo.avatar.name)
+        image = Image.open(os.path.join(base_dir, photo.avatar.name))
         resized_image = image.resize((100, 100), Image.ANTIALIAS)
         resized_image.save(photo.avatar.name)
 
