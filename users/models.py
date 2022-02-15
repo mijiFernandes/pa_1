@@ -20,14 +20,8 @@ class Profile(models.Model):
     def save(self, *args, **kwargs):
         photo = super(Profile, self).save()
 
-        x = self.cleaned_data.get('x')
-        y = self.cleaned_data.get('y')
-        w = self.cleaned_data.get('width')
-        h = self.cleaned_data.get('height')
-
         image = Image.open(photo.avatar)
-        cropped_image = image.crop((x, y, w + x, h + y))
-        resized_image = cropped_image.resize((200, 200), Image.ANTIALIAS)
+        resized_image = image.resize((100, 100), Image.ANTIALIAS)
         storage_path = storage.open(photo.avatar.name, "wb")
         resized_image.save(storage_path, 'png')
         storage_path.close()
