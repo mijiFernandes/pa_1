@@ -11,7 +11,6 @@ class Profile(models.Model):
     avatar = models.ImageField(default="default.jpg", upload_to='profile_images/%Y/%m')
     bio = models.TextField()
     point = 0
-    output = json.dumps(point)
 
     def __str__(self):
         return self.user.username
