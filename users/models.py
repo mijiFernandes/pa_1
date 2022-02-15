@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 import urllib.request
-
+import simplejson as json
 
 
 class Profile(models.Model):
@@ -10,7 +10,8 @@ class Profile(models.Model):
 
     avatar = models.ImageField(default="default.jpg", upload_to='profile_images/%Y/%m')
     bio = models.TextField()
-    point = models.IntegerField(default=0, verbose_name="POINT")
+    point = 0
+    output = json.dumps(point)
 
     def __str__(self):
         return self.user.username
