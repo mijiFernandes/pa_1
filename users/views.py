@@ -87,9 +87,9 @@ def profile(request):
 
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
-            # profile_form.save()
+            profile_form.save()
             messages.success(request, 'Your profile is updated successfully')
-            return reverse_lazy('home')
+            return redirect(to='users-profile')
     else:
         user_form = UpdateUserForm(instance=request.user)
         profile_form = UpdateProfileForm(instance=request.user.profile)
