@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
 import urllib.request
-from django.utils import simplejson as json
 
 
 
