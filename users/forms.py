@@ -90,11 +90,3 @@ class UpdateProfileForm(forms.ModelForm):
         model = Profile
         fields = ['avatar', 'bio']
 
-    def save(self, *args, **kwargs):
-        photo = super(UpdateProfileForm, self).save()
-
-        image = Image.open('media/' + photo.avatar.name)
-        resized_image = image.resize((100, 100), Image.ANTIALIAS)
-        resized_image.save(photo.avatar.name)
-
-        return photo

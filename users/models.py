@@ -18,4 +18,10 @@ class Profile(models.Model):
 
     # resizing images
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+        photo = super(Profile, self).save()
+
+        image = Image.open(photo.avatar.url)
+        resized_image = image.resize((100, 100), Image.ANTIALIAS)
+        resized_image.save(photo.avatar.name.url)
+
+        return photo
