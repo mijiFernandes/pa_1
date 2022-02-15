@@ -7,7 +7,7 @@ from PIL import Image
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    avatar = models.ImageField(default='https://pa-bucket-1.s3.us-east-2.amazonaws.com/media/default.jpg', upload_to='profile_images/%Y/%m')
+    avatar = models.ImageField(default='../static/default.jpg', upload_to='profile_images/%Y/%m')
     bio = models.TextField()
 
     def __str__(self):
