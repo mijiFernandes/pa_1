@@ -1,10 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
-from django.core.files.storage import default_storage as storage
-
-# Extending User Model Using a One-To-One Link
-from django.urls import reverse_lazy
+import urllib.request
 
 
 class Profile(models.Model):
@@ -19,7 +16,7 @@ class Profile(models.Model):
     # resizing images
     def save(self, *args, **kwargs):
         super().save()
-
-        image = Image.open(self.avatar.url)
+        urllib.request.urlretrieve(self.avatar.url, "image.png")
+        image = Image.open("image.png")
         resized_image = image.resize((100, 100), Image.ANTIALIAS)
-        resized_image.save(self.avatar.name.url)
+        resized_image.save(self.avatar.name)
