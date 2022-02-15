@@ -1,9 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import User
 from PIL import Image
+from django.http.response import HttpResponseRedirect, HttpResponse
 
 
 # Extending User Model Using a One-To-One Link
+from django.urls import reverse_lazy
+
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
@@ -16,11 +20,11 @@ class Profile(models.Model):
     # resizing images
     def save(self, *args, **kwargs):
         super().save()
-        return super(Profile, self).save(*args, **kwargs)
 
-        # img = Image.open('/media/' + self.avatar.name)
-        #
-        # if img.height > 100 or img.width > 100:
-        #     new_img = (100, 100)
-        #     img.thumbnail(new_img)
-        #     img.save(self.avatar.name)
+        img = Image.open('media/' + self.avatar.name)
+
+        if img.height > 100 or img.width > 100:
+            new_img = (100, 100)
+            img.thumbnail(new_img)
+            img.save(self.avatar.name)
+            return HttpResponseRedirect(reverse_lazy('users:users-profile'))
