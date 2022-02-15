@@ -16,6 +16,7 @@ class Profile(models.Model):
     # resizing images
     def save(self, *args, **kwargs):
         super().save()
+        return super(Profile, self).save(*args, **kwargs)
 
         # img = Image.open('/media/' + self.avatar.name)
         #
