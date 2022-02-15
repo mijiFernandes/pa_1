@@ -78,3 +78,11 @@
         </div>
      </div>
 {% endblock content %}
+{% block extra-script %}
+<script>
+            function addPoint(){
+                var a = {{ output|safe }}
+                alert("" + a);
+            }
+</script>
+{% endblock %}
