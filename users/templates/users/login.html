@@ -80,9 +80,12 @@
 {% endblock content %}
 {% block extra-script %}
 <script type="text/javascript">
-            function addPoint(){
-                var a = {{ user.profile.point }};
-                alert("" + a);
-            }
+
+
+
+    function addPoint(){
+        var a = {{ user.profile.point }};
+        alert("" + a);
+    }
 </script>
 {% endblock %}
