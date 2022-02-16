@@ -10,7 +10,6 @@ class Profile(models.Model):
 
     avatar = models.ImageField(default="default.jpg", upload_to='profile_images/%Y/%m')
     bio = models.TextField()
-    point = models.IntegerField(default=0)
 
     def __str__(self):
         return self.user.username
